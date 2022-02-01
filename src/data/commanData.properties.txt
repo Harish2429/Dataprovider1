@@ -1,0 +1,7 @@
+browser Chrome
+url http://localhost:8888
+userName admin
+password admin
+orgName skype15
+firstname Jhon
+lastName y
