@@ -26,8 +26,7 @@ public class sample55 extends BaseClass {
 	  WebElement s = cnop.getIndustryEdt();
 	  wLib.select(indust,s);
          /*step6: verification*/
-	  
-	  OrganizationInfo oinfop=new OrganizationInfo(driver);
+	    OrganizationInfo oinfop=new OrganizationInfo(driver);
 	  wLib.waitForElementVisibility(driver, oinfop.getSuccessHeaderMsg());
 	  String actsuccMsg = oinfop.getSuccessHeaderMsg().getText();
 	Assert.assertTrue(actsuccMsg.contains(orgname));
