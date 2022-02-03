@@ -2,16 +2,40 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-01-27T14:56:10 IST" name="Default suite" finished-at="2022-01-27T14:56:10 IST" duration-ms="82">
+  <suite started-at="2022-02-02T21:23:43 IST" name="Default suite" finished-at="2022-02-02T21:26:01 IST" duration-ms="138098">
     <groups>
     </groups>
-    <test started-at="2022-01-27T14:56:10 IST" name="Default test" finished-at="2022-01-27T14:56:10 IST" duration-ms="82">
-      <class name="practice.Retryclass">
-        <test-method signature="amazontest()[pri:0, instance:practice.Retryclass@67080771]" started-at="2022-01-27T14:56:10 IST" name="amazontest" finished-at="2022-01-27T14:56:10 IST" duration-ms="17" status="PASS">
+    <test started-at="2022-02-02T21:23:43 IST" name="Default test" finished-at="2022-02-02T21:26:01 IST" duration-ms="138098">
+      <class name="practice.Demo1">
+        <test-method is-config="true" signature="configBS()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:23:43 IST" name="configBS" finished-at="2022-02-02T21:23:43 IST" duration-ms="11" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- amazontest -->
-      </class> <!-- practice.Retryclass -->
+        </test-method> <!-- configBS -->
+        <test-method is-config="true" signature="configBC()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:23:43 IST" name="configBC" finished-at="2022-02-02T21:24:14 IST" duration-ms="30658" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configBC -->
+        <test-method is-config="true" signature="configBM()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:24:14 IST" name="configBM" finished-at="2022-02-02T21:24:27 IST" duration-ms="12604" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configBM -->
+        <test-method signature="happpy()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:24:27 IST" name="happpy" finished-at="2022-02-02T21:25:43 IST" duration-ms="76476" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- happpy -->
+        <test-method is-config="true" signature="configAM()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:25:43 IST" name="configAM" finished-at="2022-02-02T21:25:51 IST" duration-ms="7724" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configAM -->
+        <test-method is-config="true" signature="configAC()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:25:51 IST" name="configAC" finished-at="2022-02-02T21:26:01 IST" duration-ms="10359" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configAC -->
+        <test-method is-config="true" signature="configAS()[pri:0, instance:practice.Demo1@bd4dc25]" started-at="2022-02-02T21:26:02 IST" name="configAS" finished-at="2022-02-02T21:26:02 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- configAS -->
+      </class> <!-- practice.Demo1 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

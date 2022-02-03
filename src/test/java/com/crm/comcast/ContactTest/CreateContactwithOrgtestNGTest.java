@@ -1,8 +1,12 @@
-package com.crm.comcast.orgnizationTest;
+package com.crm.comcast.ContactTest;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.Vtiger.comcast.pomrepositylib.ContactInformationpage;
+import com.Vtiger.comcast.pomrepositylib.Contactspage;
+import com.Vtiger.comcast.pomrepositylib.CreateNewContactpage;
 import com.Vtiger.comcast.pomrepositylib.CreateNewOrganization;
 import com.Vtiger.comcast.pomrepositylib.Home;
 import com.Vtiger.comcast.pomrepositylib.Login;
@@ -13,7 +17,7 @@ import com.crm.Generic.utilites.FileUtility;
 import com.crm.Generic.utilites.JavaUtility;
 import com.crm.Generic.utilites.WebDriverUtility;
 
-public class CreateOrganization {
+public class CreateContactwithOrgtestNGTest {
 	public static void main(String[] args) throws Throwable {
 		/* create object */
 		JavaUtility jLib=new JavaUtility();
@@ -29,7 +33,8 @@ public class CreateOrganization {
 		String password = fLib.getPropertyKeyValue("password");
 		
 		/* read test data*/
-		String orgName = eLib.getDataFromExcel("Sheet2", 2, 0)+"_"+jLib.getRandomNumber();
+		String lastName = eLib.getDataFromExcel("Sheet2", 5, 0)+"_"+jLib.getRandomNumber();
+		String orgName = eLib.getDataFromExcel("Sheet2", 2, 0)+"-"+jLib.getRandomNumber();
 		
 		/* steps1 to launch the browser*/
 		
@@ -44,6 +49,7 @@ public class CreateOrganization {
 		}
 		
 		/*steps2 to login to app*/
+	   wLib.waitUntilPageLoad(driver);
 		driver.get(url);
 		Login lp=new Login(driver);
 		lp.loginToApp(userName, password);
@@ -60,30 +66,36 @@ public class CreateOrganization {
 	  /*  step5: create an org*/
 	  CreateNewOrganization cnop=new CreateNewOrganization(driver);
 	  cnop.createOrg(orgName);
+	  OrganizationInfo oi=new OrganizationInfo(driver);
+	  wLib.waitForElementVisibility(driver,oi.getSuccessHeaderMsg() );
 	  
-	  /*step6: verify*/
+	  /*step6: navigate to Contact page*/
+	  hp.getContactsLnk().click();
 	  
-	  OrganizationInfo oinfop=new OrganizationInfo(driver);
-	  wLib.waitForElementVisibility(driver, oinfop.getSuccessHeaderMsg());
-	  String actsuccMsg = oinfop.getSuccessHeaderMsg().getText();
-	  if(actsuccMsg.contains(orgName))
-	  {
-		  System.out.println("org is created successfully******pass");
-	  }
-	  else
-	  {
-		  System.out.println("org is not created successfully*****Fail***");
-		  
-	  }
-
-		  /* step:7 logout*/
-	   hp.logout();
-	   
-	   /*step8: close browser*/
-	   
-	   driver.quit();	
-				
-				
+		/* step4: click create new contatact */
+		Contactspage cop=new Contactspage(driver);
+		cop.getCreateNewBtn().click();
+		
+		/*step5: navigate create new Contact page*/
+		CreateNewContactpage cno=new CreateNewContactpage(driver);
+	    wLib.switchToWindow(driver, "Accounts");
+		cno.createContact(lastName, orgName);
+		
+		/*  step6: verification*/
+		ContactInformationpage ciof=new ContactInformationpage(driver);
+		String contMsg = ciof.getContactHeaderMsg().getText();
+		if(contMsg.contains(lastName))
+		{
+			System.out.println(lastName+"test case is successfully *** Pass***");
+			
+		}else {
+			System.out.println(lastName+"test case is not verified****Fail");
+		}
+		
+		
+		/*step7: */
+		hp.logout();
+	  
 	}
 
 }

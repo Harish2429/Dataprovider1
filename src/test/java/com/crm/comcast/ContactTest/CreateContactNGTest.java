@@ -7,18 +7,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import com.Vtiger.comcast.pomrepositylib.ContactInformationpage;
 import com.Vtiger.comcast.pomrepositylib.Contactspage;
 import com.Vtiger.comcast.pomrepositylib.CreateNewContactpage;
-import com.Vtiger.comcast.pomrepositylib.CreateNewOrganization;
 import com.Vtiger.comcast.pomrepositylib.Home;
 import com.Vtiger.comcast.pomrepositylib.Login;
-import com.Vtiger.comcast.pomrepositylib.OrganizationInfo;
-import com.Vtiger.comcast.pomrepositylib.Organizations;
 import com.crm.Generic.utilites.ExcelUtility;
 import com.crm.Generic.utilites.FileUtility;
 import com.crm.Generic.utilites.JavaUtility;
 import com.crm.Generic.utilites.WebDriverUtility;
 
-public class CreateContactwithOrg1Test {
+public class CreateContactNGTest {
 	public static void main(String[] args) throws Throwable {
+	
 		/* create object */
 		JavaUtility jLib=new JavaUtility();
 		FileUtility fLib=new FileUtility();
@@ -34,7 +32,6 @@ public class CreateContactwithOrg1Test {
 		
 		/* read test data*/
 		String lastName = eLib.getDataFromExcel("Sheet2", 5, 0)+"_"+jLib.getRandomNumber();
-		String orgName = eLib.getDataFromExcel("Sheet2", 2, 0)+"-"+jLib.getRandomNumber();
 		
 		/* steps1 to launch the browser*/
 		
@@ -49,37 +46,22 @@ public class CreateContactwithOrg1Test {
 		}
 		
 		/*steps2 to login to app*/
-	   wLib.waitUntilPageLoad(driver);
+		wLib.waitUntilPageLoad(driver);
 		driver.get(url);
 		Login lp=new Login(driver);
 		lp.loginToApp(userName, password);
 		
-		/*step3: navigate to org*/
-		
+		/* step3:navigate to contact page*/
 		Home hp=new Home(driver);
-		hp.getOrganizationLnk().click();
+		hp.getContactsLnk().click();
 		
-		/* step4: navigate to crate org page*/
-	  Organizations org=new Organizations(driver);
-	  org.getCreateorgImg().click();
-	  
-	  /*  step5: create an org*/
-	  CreateNewOrganization cnop=new CreateNewOrganization(driver);
-	  cnop.createOrg(orgName);
-	  OrganizationInfo oi=new OrganizationInfo(driver);
-	  wLib.waitForElementVisibility(driver,oi.getSuccessHeaderMsg() );
-	  
-	  /*step6: navigate to Contact page*/
-	  hp.getContactsLnk().click();
-	  
 		/* step4: click create new contatact */
 		Contactspage cop=new Contactspage(driver);
 		cop.getCreateNewBtn().click();
 		
 		/*step5: navigate create new Contact page*/
 		CreateNewContactpage cno=new CreateNewContactpage(driver);
-	    wLib.switchToWindow(driver, "Accounts");
-		cno.createContact(lastName, orgName);
+		cno.createContact(lastName);
 		
 		/*  step6: verification*/
 		ContactInformationpage ciof=new ContactInformationpage(driver);
@@ -91,11 +73,9 @@ public class CreateContactwithOrg1Test {
 		}else {
 			System.out.println(lastName+"test case is not verified****Fail");
 		}
-		
-		
-		/*step7: */
 		hp.logout();
-	  
+		driver.quit();
+		
 	}
 
 }

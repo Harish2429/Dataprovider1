@@ -16,7 +16,7 @@ public class CreateNewContactpage extends WebDriverUtility {
 		PageFactory.initElements(driver, this);
 		
 	}
-	@FindBy(name = "lastname")
+	@FindBy(name ="lastname")
 	private WebElement lastNameEdt;
 	
 	public WebElement getLastNameEdt() {

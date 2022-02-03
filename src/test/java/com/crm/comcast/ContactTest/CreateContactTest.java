@@ -17,7 +17,7 @@ public class CreateContactTest extends BaseClass {
 		public void createContact() throws Throwable, Throwable {
 			int randomInt = jLib.getRandomNumber();
 			/* read test data*/
-			String lastName = eLib.getDataFromExcel("Sheet2", 2, 2)+randomInt;
+			String lastName = eLib.getDataFromExcel("Sheet2", 1, 2)+randomInt;
 			
 			/* step3:navigate to contact page*/
 			Home hp=new Home(driver);
@@ -45,7 +45,7 @@ public class CreateContactTest extends BaseClass {
 			int randomInt = jLib.getRandomNumber();
 
 			/* read test data*/
-			String lastName = eLib.getDataFromExcel("Sheet2", 5, 0)+randomInt;
+			String lastName = eLib.getDataFromExcel("Sheet2", 1, 2)+randomInt;
 			String orgName = eLib.getDataFromExcel("Sheet2", 2, 0)+randomInt;
 			
 			/*step3: navigate to org*/

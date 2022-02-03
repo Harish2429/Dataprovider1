@@ -3,11 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="practice.Retryclass">
+      <class name="com.crm.comcast.ContactTest.CreateContactTest">
         <methods>
-          <include name="amazontest"/>
+          <include name="configBS"/>
+          <include name="configBC"/>
+          <include name="createContact"/>
+          <include name="configAS"/>
+          <include name="configAC"/>
+          <include name="configBM"/>
+          <include name="configAM"/>
         </methods>
-      </class> <!-- practice.Retryclass -->
+      </class> <!-- com.crm.comcast.ContactTest.CreateContactTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
